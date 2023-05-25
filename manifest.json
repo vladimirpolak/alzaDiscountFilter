@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "name": "Discount Filter",
+    "version": "1.0",
+    "permissions": ["storage"],
+    "action": {
+      "default_popup": "src/popup.html"
+    },
+    "background": {
+      "service_worker": "src/background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://www.alza.sk/*", "https://www.alza.cz/*"],
+        "js": ["src/content.js"]
+      }
+    ]
+  }
+  
