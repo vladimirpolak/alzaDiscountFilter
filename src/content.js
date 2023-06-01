@@ -24,7 +24,7 @@ function processInput(value) {
 }
 
 class DiscountFilter {
-    #sliderTitle = 'Zľava';
+    #sliderTitle;
     #sliderIncrement = 5;
     #filterSliderID = 'discountFilterSlider';
     #discountFilterInputID = 'discountFilterInput';
@@ -72,6 +72,11 @@ class DiscountFilter {
     `
 
     constructor(targetDiscount, itemsContainerSelector, filtersContainer, discountValueExtractor) {
+      if (window.location.hostname === 'www.alza.sk') {
+        this.#sliderTitle = 'Zľava';
+      } else if (window.location.hostname === 'www.alza.cz') {
+        this.#sliderTitle = 'Sleva';
+      }
       this.targetDiscount = targetDiscount;
       this.itemsContainer = document.querySelector(itemsContainerSelector);
       this.filtersContainer = document.querySelector(filtersContainer)
